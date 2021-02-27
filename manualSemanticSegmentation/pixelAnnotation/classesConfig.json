@@ -1,0 +1,486 @@
+{
+    "labels": {
+        "background": {
+            "categorie": "background",
+            "color": [
+                255,
+                0,
+                0
+            ],
+            "id": 255,
+            "id_categorie": 255,
+            "name": "background"
+        },
+        "arrozBranco": {
+            "categorie": "arrozBranco",
+            "color": [
+                150,
+                100,
+                100
+            ],
+            "id": 1,
+            "id_categorie": 1,
+            "name": "arrozBranco"
+        },
+        "feijao": {
+            "categorie": "feijao",
+            "color": [
+                70,
+                70,
+                70
+            ],
+            "id": 2,
+            "id_categorie": 2,
+            "name": "feijao"
+        },
+        "salada": {
+            "categorie": "salada",
+            "color": [
+                0,
+                60,
+                100
+            ],
+            "id": 3,
+            "id_categorie": 3,
+            "name": "salada"
+        },
+        "carne": {
+            "categorie": "carne",
+            "color": [
+                0,
+                0,
+                142
+            ],
+            "id": 4,
+            "id_categorie": 4,
+            "name": "carne"
+        },
+        "frango": {
+            "categorie": "frango",
+            "color": [
+                0,
+                0,
+                90
+            ],
+            "id": 5,
+            "id_categorie": 5,
+            "name": "frango"
+        },
+        "ovo": {
+            "categorie": "ovo",
+            "color": [
+                111,
+                74,
+                0
+            ],
+            "id": 6,
+            "id_categorie": 6,
+            "name": "ovo"
+        },
+        "pure de batata": {
+            "categorie": "pure de batata",
+            "color": [
+                13,
+                50,
+                0
+            ],
+            "id": 7,
+            "id_categorie": 7,
+            "name": "pure de batata"
+        },
+        "tomate": {
+            "categorie": "tomate",
+            "color": [
+                190,
+                153,
+                153
+            ],
+            "id": 8,
+            "id_categorie": 8,
+            "name": "tomate"
+        },
+        "batata": {
+            "categorie": "batata",
+            "color": [
+                81,
+                0,
+                81
+            ],
+            "id": 9,
+            "id_categorie": 9,
+            "name": "batata"
+        },
+        "farofa": {
+            "categorie": "farofa",
+            "color": [
+                180,
+                165,
+                180
+            ],
+            "id": 10,
+            "id_categorie": 10,
+            "name": "farofa"
+        },
+        "macarrao": {
+            "categorie": "macarrao",
+            "color": [
+                0,
+                0,
+                230
+            ],
+            "id": 11,
+            "id_categorie": 11,
+            "name": "macarrao"
+        },
+        "batata frita": {
+            "categorie": "batata frita",
+            "color": [
+                128,
+                128,
+                128
+            ],
+            "id": 12,
+            "id_categorie": 12,
+            "name": "batata frita"
+        },
+        "legumes": {
+            "categorie": "legumes",
+            "color": [
+                40,
+                58,
+                10
+            ],
+            "id": 13,
+            "id_categorie": 13,
+            "name": "legumes"
+        },
+        "pepino": {
+            "categorie": "pepino",
+            "color": [
+                250,
+                170,
+                160
+            ],
+            "id": 14,
+            "id_categorie": 14,
+            "name": "pepino"
+        },
+        "cenoura": {
+            "categorie": "cenoura",
+            "color": [
+                220,
+                20,
+                60
+            ],
+            "id": 15,
+            "id_categorie": 15,
+            "name": "cenoura"
+        },
+        "beterraba": {
+            "categorie": "beterraba",
+            "color": [
+                153,
+                250,
+                153
+            ],
+            "id": 16,
+            "id_categorie": 16,
+            "name": "beterraba"
+        },
+        "parmegiana": {
+            "categorie": "parmegiana",
+            "color": [
+                153,
+                153,
+                153
+            ],
+            "id": 17,
+            "id_categorie": 17,
+            "name": "parmegiana"
+        },
+        "strogonoff": {
+            "categorie": "strogonoff",
+            "color": [
+                230,
+                150,
+                140
+            ],
+            "id": 18,
+            "id_categorie": 18,
+            "name": "strogonoff"
+        },
+        "batata palha": {
+            "categorie": "batata palha",
+            "color": [
+                230,
+                150,
+                30
+            ],
+            "id": 19,
+            "id_categorie": 19,
+            "name": "batata palha"
+        },
+        "linguica": {
+            "categorie": "linguica",
+            "color": [
+                255,
+                0,
+                0
+            ],
+            "id": 20,
+            "id_categorie": 20,
+            "name": "linguica"
+        },
+        "brocolis": {
+            "categorie": "brocolis",
+            "color": [
+                128,
+                64,
+                128
+            ],
+            "id": 21,
+            "id_categorie": 21,
+            "name": "brocolis"
+        },
+        "milho": {
+            "categorie": "milho",
+            "color": [
+                250,
+                22,
+                250
+            ],
+            "id": 22,
+            "id_categorie": 22,
+            "name": "milho"
+        },
+        "banana": {
+            "categorie": "banana",
+            "color": [
+                244,
+                35,
+                232
+            ],
+            "id": 23,
+            "id_categorie": 23,
+            "name": "banana"
+        },
+        "abobora": {
+            "categorie": "abobora",
+            "color": [
+                70,
+                130,
+                180
+            ],
+            "id": 24,
+            "id_categorie": 24,
+            "name": "abobora"
+        }, "arrozIntegral": {
+            "categorie": "arrozIntegral",
+            "color": [
+                150,
+                100,
+                100
+            ],
+            "id": 25,
+            "id_categorie": 25,
+            "name": "arrozIntegral"
+        }, "carneMoida": {
+            "categorie": "carneMoida",
+            "color": [
+                13,
+                50,
+                0
+            ],
+            "id": 26,
+            "id_categorie": 26,
+            "name": "carneMoida"
+        },
+        "peixe": {
+            "categorie": "peixe",
+            "color": [
+                190,
+                153,
+                153
+            ],
+            "id": 27,
+            "id_categorie": 27,
+            "name": "peixe"
+        },
+        "pao": {
+            "categorie": "pao",
+            "color": [
+                81,
+                0,
+                81
+            ],
+            "id": 28,
+            "id_categorie": 28,
+            "name": "pao"
+        },
+        "abacate": {
+            "categorie": "abacate",
+            "color": [
+                180,
+                165,
+                180
+            ],
+            "id": 29,
+            "id_categorie": 29,
+            "name": "abacate"
+        },
+        "macarrao": {
+            "categorie": "macarrao",
+            "color": [
+                0,
+                0,
+                230
+            ],
+            "id": 11,
+            "id_categorie": 11,
+            "name": "macarrao"
+        },
+        "batata frita": {
+            "categorie": "batata frita",
+            "color": [
+                128,
+                128,
+                128
+            ],
+            "id": 12,
+            "id_categorie": 12,
+            "name": "batata frita"
+        },
+        "legumes": {
+            "categorie": "legumes",
+            "color": [
+                40,
+                58,
+                10
+            ],
+            "id": 13,
+            "id_categorie": 13,
+            "name": "legumes"
+        },
+        "pepino": {
+            "categorie": "pepino",
+            "color": [
+                250,
+                170,
+                160
+            ],
+            "id": 14,
+            "id_categorie": 14,
+            "name": "pepino"
+        },
+        "cenoura": {
+            "categorie": "cenoura",
+            "color": [
+                220,
+                20,
+                60
+            ],
+            "id": 15,
+            "id_categorie": 15,
+            "name": "cenoura"
+        },
+        "beterraba": {
+            "categorie": "beterraba",
+            "color": [
+                153,
+                250,
+                153
+            ],
+            "id": 16,
+            "id_categorie": 16,
+            "name": "beterraba"
+        },
+        "parmegiana": {
+            "categorie": "parmegiana",
+            "color": [
+                153,
+                153,
+                153
+            ],
+            "id": 17,
+            "id_categorie": 17,
+            "name": "parmegiana"
+        },
+        "strogonoff": {
+            "categorie": "strogonoff",
+            "color": [
+                230,
+                150,
+                140
+            ],
+            "id": 18,
+            "id_categorie": 18,
+            "name": "strogonoff"
+        },
+        "batata palha": {
+            "categorie": "batata palha",
+            "color": [
+                230,
+                150,
+                30
+            ],
+            "id": 19,
+            "id_categorie": 19,
+            "name": "batata palha"
+        },
+        "linguica": {
+            "categorie": "linguica",
+            "color": [
+                255,
+                0,
+                0
+            ],
+            "id": 20,
+            "id_categorie": 20,
+            "name": "linguica"
+        },
+        "brocolis": {
+            "categorie": "brocolis",
+            "color": [
+                128,
+                64,
+                128
+            ],
+            "id": 21,
+            "id_categorie": 21,
+            "name": "brocolis"
+        },
+        "milho": {
+            "categorie": "milho",
+            "color": [
+                250,
+                22,
+                250
+            ],
+            "id": 22,
+            "id_categorie": 22,
+            "name": "milho"
+        },
+        "banana": {
+            "categorie": "banana",
+            "color": [
+                244,
+                35,
+                232
+            ],
+            "id": 23,
+            "id_categorie": 23,
+            "name": "banana"
+        },
+        "abobora": {
+            "categorie": "abobora",
+            "color": [
+                70,
+                130,
+                180
+            ],
+            "id": 24,
+            "id_categorie": 24,
+            "name": "abobora"
+        }
+    }
+}

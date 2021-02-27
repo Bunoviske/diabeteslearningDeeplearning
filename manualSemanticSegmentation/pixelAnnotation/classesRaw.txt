@@ -1,0 +1,61 @@
+0: void
+
+1: arrozBranco
+
+2: feijao
+
+3: salada
+
+4: carne
+
+5: frango
+
+6: ovo
+
+7: pure de batata
+
+8: tomate
+
+9: batata
+
+10: farofa
+
+11: macarrao
+
+12: batata frita
+
+13: legumes
+
+14: pepino
+
+15: cenoura
+
+16: beterraba
+
+17: parmegiana
+
+18: strogonoff
+
+19: batata palha
+
+20: linguica
+
+21: brocolis
+
+22: milho
+
+23: banana
+
+24: abobora
+
+25: arrozIntegral
+
+26: carneMoida
+
+27: peixe
+
+28: pao
+
+29: abacate
+
+
