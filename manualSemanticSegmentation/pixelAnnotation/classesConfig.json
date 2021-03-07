@@ -481,6 +481,61 @@
             "id": 24,
             "id_categorie": 24,
             "name": "abobora"
+        }, 
+         "arrozIntegral": {
+            "categorie": "arrozIntegral",
+            "color": [
+                75,
+                135,
+                185
+            ],
+            "id": 25,
+            "id_categorie": 25,
+            "name": "arrozIntegral"
+        }, 
+        "carneMoida": {
+            "categorie": "carneMoida",
+            "color": [
+                85,
+                145,
+                195
+            ],
+            "id": 26,
+            "id_categorie": 26,
+            "name": "carneMoida"
+        }, 
+        "salmao": {
+            "categorie": "salmao",
+            "color": [
+                95,
+                155,
+                205
+            ],
+            "id": 27,
+            "id_categorie": 27,
+            "name": "salmao"
+        }, 
+        "pao": {
+            "categorie": "pao",
+            "color": [
+                105,
+                165,
+                215
+            ],
+            "id": 28,
+            "id_categorie": 28,
+            "name": "pao"
+        }, 
+        "abacate": {
+            "categorie": "abacate",
+            "color": [
+                115,
+                175,
+                225
+            ],
+            "id": 29,
+            "id_categorie": 29,
+            "name": "abacate"
         }
     }
 }

@@ -52,10 +52,11 @@
 
 26: carneMoida
 
-27: peixe
+27: salmao
 
 28: pao
 
 29: abacate
+
 
 
