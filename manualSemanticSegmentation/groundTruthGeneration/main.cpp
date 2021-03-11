@@ -1,38 +1,25 @@
-#include "carbohydrate.h"
 #include "watershed.hpp"
 
-// FASTAI 
+// FASTAI
 // width 466
 // height 350
 
-#define WIDTH 250
-#define HEIGHT 250
+// #define WIDTH 250
+// #define HEIGHT 250
 #define LINE_THICKNESS 2
-string IMAGES_FOLDER = "/home/bruno/openCV/semanticSegmentation/build/images";
 
-string labels = 
-"1: arroz\n\
-2: feijao\n\
-3: salada\n\
-4: carne\n\
-5: frango\n\
-6: ovo\n\
-7: pure de batata\n\
-8: tomate\n\
-9: batata\n\
-10: farofa\n";
-
-
-void chooseFoods(int event, int x, int y, int flags, void *objeto);        //header funcao de callback
-void chooseWshedMarkers(int event, int x, int y, int flags, void *objeto); //header funcao de callback
+void chooseFoods(int event, int x, int y, int flags, void *objeto);        
+void chooseWshedMarkers(int event, int x, int y, int flags, void *objeto); 
 void createGroundTruth(int index, int food);
-string getFileNameWithoutExtension(string filename);
-int runManualSemanticSegmentation(Mat image, string filename);
-void getImages(String folder);
+string getFileNameWithoutExtension(string filepath);
+string getFileNameWithExtension(string filepath);
+int runManualSemanticSegmentation(Mat image, string filepath);
+void getImagesAndRun(string folder);
+void executeMkdir(string mkdir);
+void executeMoveFile(string imageName, string destinationFolder);
+void readLabelsTxtAndCreateMap(string filepath);
 
-carboDetector carbo; //global para ser visto pela funcao de callback
 Watershed wshed;
-
 //watershed opencv global variables
 Mat markerMask, img, img0, groundTruth;
 Mat imgGray;
@@ -40,35 +27,68 @@ Mat markers = Mat(img.size(), CV_32S);
 Mat wshedMat = Mat(img.size(), CV_8UC3);
 Point prevPt(-1, -1);
 
+string IMAGES_FOLDER;
+map<string, string> labels;
+
 int main(int argc, char **argv)
 {
-    // VideoCapture cap;
-    // // Le imagem/video do terminal
-    // if (argc > 1)
-    // {
-    //     cap.open(argv[1]);
-    // }
-    // // Se nao tiver argumentos de entrada
-    // else
-    // {
-    //     cout << "Insira uma imagem" << endl;
-    //     return -1;
-    // }
+    if (argc > 2)
+    {
+        IMAGES_FOLDER = argv[1];
+        readLabelsTxtAndCreateMap(argv[2]);
+    }
+    else
+    {
+        cout << "Insira o path para sua pasta de imagens e o path para o arquivo txt de labels" << endl;
+        return -1;
+    }
 
-    getImages(IMAGES_FOLDER);
+    executeMkdir("mkdir " + IMAGES_FOLDER + "/gt");
+    executeMkdir("mkdir " + IMAGES_FOLDER + "/done");
 
-    string mkdir = "mkdir " + IMAGES_FOLDER + "/gt";
-    system(mkdir.c_str());
-
-    //mv /home/bruno/openCV/semanticSegmentation/build/images/*"GT.png" /home/bruno/openCV/semanticSegmentation/build/images/gt
-    string mv = "mv " + IMAGES_FOLDER + "/*\"GT.png\" " + IMAGES_FOLDER + "/gt";
-    cout << mv << endl;
-    system(mv.c_str()); 
+    getImagesAndRun(IMAGES_FOLDER);
 
     return 0;
 }
+void readLabelsTxtAndCreateMap(string filepath)
+{
+    std::ifstream file(filepath);
+    std::string str;
+    while (std::getline(file, str))
+    {
+        int pos = str.find(": ");
+        string id = str.substr(0, pos);
+        string foodName = str.substr(pos + 2, str.length());
+        //cout << id << " " << foodName << endl;
+        labels.insert({id, foodName});
+    }
+}
 
-void getImages(String folder)
+void executeMkdir(string mkdir)
+{
+    try
+    {
+        system(mkdir.c_str());
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+}
+void executeMoveFile(string imageName, string destinationFolder)
+{
+    //destination folder should be 'gt' or 'done'
+    try
+    {
+        string mv = "mv " + IMAGES_FOLDER + '/' + imageName + ' ' + IMAGES_FOLDER + '/' + destinationFolder;
+        system(mv.c_str());
+    }
+    catch (const std::exception &e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+}
+void getImagesAndRun(string folder)
 {
 
     /*********
@@ -77,30 +97,29 @@ void getImages(String folder)
      *
      *********/
 
-    vector<string> filenames;
+    vector<string> filepaths;
 
-    glob(folder, filenames);
-    cout << folder << endl;
-    cout << "Qtd de imagens: " << filenames.size() << endl;
+    glob(folder, filepaths);
+    cout << "Qtd de imagens: " << filepaths.size() << endl;
 
-    for (size_t i = 0; i < filenames.size(); ++i)
+    for (size_t i = 0; i < filepaths.size(); ++i)
     {
-        Mat src = imread(filenames[i]);
+        Mat src = imread(filepaths[i]);
 
         if (!src.data)
             cerr << "Problem loading image!!!" << endl;
         else
         {
-            cout << filenames[i] << endl;
-            runManualSemanticSegmentation(src, filenames[i]);
+            cout << filepaths[i] << endl;
+            runManualSemanticSegmentation(src, filepaths[i]);
         }
     }
 }
 
-int runManualSemanticSegmentation(Mat image, string filename)
+int runManualSemanticSegmentation(Mat image, string filepath)
 {
 
-    resize(image, image, Size(WIDTH, HEIGHT));
+    //resize(image, image, Size(WIDTH, HEIGHT));
     img = image.clone();
 
     cvtColor(img, markerMask, COLOR_BGR2GRAY);
@@ -109,9 +128,14 @@ int runManualSemanticSegmentation(Mat image, string filename)
     groundTruth = markerMask.clone();
 
     img0 = img.clone();
+    namedWindow("plate", WINDOW_AUTOSIZE);
+    resizeWindow("plate", img0.cols, img0.rows);
+    namedWindow("wshed", WINDOW_AUTOSIZE);
+    resizeWindow("wshed", img0.cols, img0.rows);
     imshow("plate", img0);
     setMouseCallback("plate", chooseWshedMarkers, NULL);
 
+    //////////////////////// etapa 1 : segmentar usando watershed
     while (1)
     {
         char c = waitKey();
@@ -120,18 +144,18 @@ int runManualSemanticSegmentation(Mat image, string filename)
         {
             return -1;
         }
-        if (c == 'n')
+        if (c == 'c') // 'classificacao': classifica os alimentos segmentados
         {
             img = image.clone();
             markers = wshed.runWatershed(&img, &markerMask, &markers, &wshedMat, imgGray);
             break;
         }
-        if (c == 'w')
+        if (c == 'w') // 'watershed' : roda algoritmo de segmentacao
         {
             img = image.clone();
             markers = wshed.runWatershed(&img, &markerMask, &markers, &wshedMat, imgGray);
         }
-        if (c == 'r')
+        if (c == 'r') // 'reload': limpa imagem de segmentada
         {
             img0 = image.clone();
             img = image.clone();
@@ -141,7 +165,8 @@ int runManualSemanticSegmentation(Mat image, string filename)
     }
 
     setMouseCallback("wshed", chooseFoods, NULL);
-    cout << "********************** Selecione as classes **********************" << endl;
+    cout << "********************** Classifique cada alimento **********************" << endl;
+    //////////////////////// etapa 2 : classificar cada alimento
     while (1)
     {
         char c = waitKey();
@@ -150,17 +175,18 @@ int runManualSemanticSegmentation(Mat image, string filename)
         {
             return -1;
         }
-        if (c == 'n')
+        if (c == 'n') // 'next': termina annotation dessa imagem e vai para a proxima
         {
             break;
         }
     }
 
-    //salva imagem GT
-    string filenameWithoutExtension = getFileNameWithoutExtension(filename);
-    imwrite(filenameWithoutExtension + "GT.png", groundTruth);
-    groundTruth = Scalar::all(0);
+    //salva imagem GT e move imagem original para outra pasta
+    string groundTruthFile = getFileNameWithoutExtension(filepath) + "_GT.png";
+    imwrite(IMAGES_FOLDER + "/gt/" + groundTruthFile, groundTruth);
+    executeMoveFile(getFileNameWithExtension(filepath), "done");
 
+    groundTruth = Scalar::all(0);
     return 0;
 }
 
@@ -190,11 +216,21 @@ void chooseFoods(int event, int x, int y, int flags, void *objeto)
     {
         //cout << "Posicao do mouse (" << x << ", " << y << ")    " << endl;
         int foodIndex = wshed.getFoodRegionIndex(Point(x, y)) + 1; //soma um pois essa funcao retorna o index - 1
-        int food;
-        cout << labels << "Digite o numero do alimento: " << flush;
-        cin >> food;
-        cout << endl;
-        createGroundTruth(foodIndex, food);
+        int foodId;
+        cout << "Digite o id do alimento: " << flush;
+        cin >> foodId;
+
+        string foodName = labels.find(to_string(foodId))->second;  
+        cout <<  foodName << endl;
+        putText(img0,         //target image
+                foodName, //text
+                Point(x, y),      //top-left position
+                cv::FONT_HERSHEY_DUPLEX,
+                0.8,
+                CV_RGB(0, 0, 255), //font color
+                2.5);
+        imshow("plate", img0);
+        createGroundTruth(foodIndex, foodId);
     }
 }
 
@@ -214,15 +250,14 @@ void createGroundTruth(int imageIndex, int food)
     }
 }
 
-string getFileNameWithoutExtension(string filename)
+string getFileNameWithoutExtension(string filepath)
 {
-    string result = "";
-    for (int i = 0; i < filename.size(); i++)
-    {
-        if (filename[i] == '.')
-            break;
-        else
-            result += filename[i];
-    }
-    return result;
+    std::filesystem::path p(filepath);
+    return p.stem();
+}
+
+string getFileNameWithExtension(string filepath)
+{
+    std::filesystem::path p(filepath);
+    return p.filename();
 }
