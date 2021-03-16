@@ -1,8 +1,6 @@
 # README #
 
-Algoritmo que faz o ground truth de classes segmentadas a partir da técnica watershed
-
-
+Imagem annotation and ground truth generation for semantic segmentation tasks. Watershed algorithm is used to help in the segmentation.
 
 
 # Compilation
@@ -37,3 +35,8 @@ Example
 6- Click 'n' to finalize this image and go to the next one  
 
 AT ANY POINT OF THE PROGRAM, PRESS 'ESC' TO GO TO THE NEXT IMAGE
+
+
+# Output
+
+Two folders are created inside your images folder: 'done' has all the images already annotated and 'gt' has the ground truth images for semantic segmentation
