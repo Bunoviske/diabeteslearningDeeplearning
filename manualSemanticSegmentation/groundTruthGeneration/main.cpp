@@ -97,7 +97,7 @@ void getImagesAndRun(string folder)
      *
      *********/
 
-    vector<string> filepaths;
+    vector<String> filepaths;
 
     glob(folder, filepaths);
     cout << "Qtd de imagens: " << filepaths.size() << endl;
@@ -163,9 +163,8 @@ int runManualSemanticSegmentation(Mat image, string filepath)
             imshow("plate", img0);
         }
     }
-
     setMouseCallback("wshed", chooseFoods, NULL);
-    cout << "********************** Classifique cada alimento **********************" << endl;
+    cout << "********************** Classifique cada alimento (OLHAR DRIVE) **********************" << endl;
     //////////////////////// etapa 2 : classificar cada alimento
     while (1)
     {
@@ -219,7 +218,7 @@ void chooseFoods(int event, int x, int y, int flags, void *objeto)
         int foodId;
         cout << "Digite o id do alimento: " << flush;
         cin >> foodId;
-
+        cout << foodId << endl;
         string foodName = labels.find(to_string(foodId))->second;  
         cout <<  foodName << endl;
         putText(img0,         //target image

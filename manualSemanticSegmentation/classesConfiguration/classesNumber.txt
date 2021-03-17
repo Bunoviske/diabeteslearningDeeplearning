@@ -58,7 +58,7 @@
 57: Carne moída
 58: Peixe
 59: Frango (com osso)
-60: Frango (Filé sem osso)
+60: Frango (sem osso)
 61: Ovo
 62: Queijo Cottage
 63: Mussarela de Búfalo
@@ -89,3 +89,12 @@
 88: Pimentão
 89: Mix Vegetais
 90: Chuchu
+91: Batata Frita
+92: Feijoada
+93: Pepino
+94: Bacon
+95: Repolho roxo
+96: Macarrão com molho
+97: Salpicão de Frango
+
+
