@@ -51,9 +51,9 @@
 50: Pão Branco
 51: Pão de Queijo
 52: Bolo
-53: Carne
+53: Carne de Vaca
 54: Cozido de Carne
-55: Strognoff
+55: Strogonoff
 56: Linguiça
 57: Carne moída
 58: Peixe
@@ -71,7 +71,7 @@
 70: Cebola Crua
 71: Tomate Cereja
 72: Tomate
-73: Brocolis
+73: Brócolis
 74: Cenoura
 75: Abobrinha
 76: Beringela
@@ -96,5 +96,8 @@
 95: Repolho roxo
 96: Macarrão com molho
 97: Salpicão de Frango
-
+98: Banana Milanesa
+99: Carne de Porco
+100: Banana da Terra
+101: Tutu de Feijão
 
