@@ -8,6 +8,7 @@
 #include <vector>
 #include <filesystem>
 #include <map>
+#include <algorithm>
 
 using namespace cv;
 using namespace std;

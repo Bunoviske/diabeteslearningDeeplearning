@@ -30,10 +30,10 @@ Vec3b colorTab[] =
 };
 
 Mat Watershed::runWatershed(Mat *img0,
-                             Mat *maskMarkers,
-                             Mat *markers,
-                             Mat *wshed,
-                             Mat imgGray)
+                            Mat *maskMarkers,
+                            Mat *markers,
+                            Mat *wshed,
+                            Mat imgGray)
 {
     //cout << "Comecando wshed" << endl;
 
@@ -82,8 +82,23 @@ Mat Watershed::runWatershed(Mat *img0,
         {
             int index = markers->at<int>(i, j);
             if (index == -1)
-            { //representa as bordas
-                wshed->at<Vec3b>(i, j) = Vec3b(255, 255, 255);
+            { //representa as bordas. é necessario remover o valor de -1 e atribuir o valor da vizinhança
+                int offset = 3;
+                Rect roi = Rect(max(0, j - offset), max(0, i - offset), min(markers->cols - 1, j + offset) - max(0, j - offset), min(markers->rows - 1, i + offset) - max(0, i - offset));
+                Mat neighbors = (*markers)(roi);
+                for (int ii = 0; ii < neighbors.rows; ii++){
+                    for (int jj = 0; jj < neighbors.cols; jj++)
+                    {
+                        int closeIndex = neighbors.at<int>(ii, jj);
+                        if (closeIndex != -1)
+                        {
+                            markers->at<int>(i, j) = closeIndex;
+                            wshed->at<Vec3b>(i, j) = colorTab[closeIndex - 1];
+                            ii = 10000; jj = 10000; //break loop
+                        }
+                    }
+                }
+                // wshed->at<Vec3b>(i, j) = Vec3b(255, 255, 255);
             }
             else if (index <= 0 || index > compCount)
             {
@@ -129,7 +144,6 @@ int Watershed::getFoodRegionArea(Point point)
 
     int index = getFoodRegionIndex(point);
     return foodAreas[index];
-
 }
 
 int Watershed::getFoodRegionIndex(Point point)
