@@ -50,7 +50,7 @@
 49: Pão Integral
 50: Pão Branco
 51: Pão de Queijo
-52: Bolo
+52: Bolo de Chocolate
 53: Carne de Vaca
 54: Cozido de Carne
 55: Strogonoff
@@ -79,11 +79,11 @@
 78: Abóbora
 79: Espinafre
 80: Couve
-81: Repolho
+81: Repolho Branco
 82: Couve Flor
 83: Quiabo
 84: Ervilha
-85: Sopa
+85: Sopa de Legumes
 86: Tofu
 87: Aspargo
 88: Pimentão
@@ -100,4 +100,18 @@
 99: Carne de Porco
 100: Banana da Terra
 101: Tutu de Feijão
-
+102: Caldo de Feijão
+103: Mostarda
+104: Purê de Abóbora
+105: Alho
+106: Limão
+107: Queijo Parmesão
+108: Ketchup
+109: Carne Empanada
+110: Carne de Cordeiro
+111: Vinagrete
+112: Caldo em Geral
+113: Presunto
+114: Queijo Mussarela
+115: Queijo Fresco
+116: Pizza
