@@ -6,3 +6,5 @@ build/
 *.jpg
 pibitTrainedModels/
 dataset*/
+wandb/
+.ipynb_checkpoints/
