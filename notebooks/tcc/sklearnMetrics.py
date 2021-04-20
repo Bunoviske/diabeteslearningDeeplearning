@@ -13,7 +13,7 @@ class Metrics():
         self.classesIdx = [idx for idx in self.classesIdx if idx not in classesToRemoveIdx]
         self.classes = [classes[idx] for idx in self.classesIdx]
         
-    def _removeClasses(self, y_pred: np.array, y_true:np.array) -> Tuple[np.array,np.array]:
+    def _removeClasses(self, y_pred: np.ndarray, y_true:np.ndarray) -> Tuple[np.ndarray,np.ndarray]:
         
         for classToRemove in self.classesToRemoveIdx:
             indexes = np.where(y_true == classToRemove)[0]
@@ -22,18 +22,18 @@ class Metrics():
             
         return y_pred, y_true
         
-    def getAccuracy(self, y_pred: np.array, y_true:np.array) -> float:
+    def getAccuracy(self, y_pred: np.ndarray, y_true:np.ndarray) -> float:
         y_pred, y_true = self._removeClasses(y_pred, y_true)
         return metrics.accuracy_score(y_true, y_pred)
             
-    def getClassificationReport(self, y_pred: np.array, y_true:np.array):
+    def getClassificationReport(self, y_pred: np.ndarray, y_true:np.ndarray):
         return metrics.classification_report(y_true, y_pred, labels=self.classesIdx,\
                                              target_names=self.classes,zero_division=1)
     
-    def get_f1Score(self, y_pred: np.array, y_true:np.array, average='micro'):
+    def get_f1Score(self, y_pred: np.ndarray, y_true:np.ndarray, average='micro'):
         return metrics.f1_score(y_true, y_pred, labels=self.classesIdx, average=average,zero_division=1)
 
-    def getConfusionMatrix(self, y_pred: np.array, y_true:np.array, normalize:str = "all", plot: bool = True):
+    def getConfusionMatrix(self, y_pred: np.ndarray, y_true:np.ndarray, normalize:str = "all", plot: bool = True):
         cm = metrics.confusion_matrix(y_true, y_pred, labels=self.classesIdx, normalize=normalize)
         if plot:
             disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=self.classes)
@@ -41,7 +41,7 @@ class Metrics():
             disp.plot()
         return cm
 
-    def plotConfusionMatrix(self, confusionMatrix: np.array, codes: List[str]):
+    def plotConfusionMatrix(self, confusionMatrix: np.ndarray, codes: List[str]):
         df_cm = pd.DataFrame(confusionMatrix, index = codes[1:], columns = codes[1:])
         plt.figure(figsize = (40,40))
         plt.tight_layout()
