@@ -6,6 +6,7 @@ build/
 *.jpg
 pibitTrainedModels/
 dataset*/
+!DatasetPreprocessing/
 wandb/
 .ipynb_checkpoints/
 __pycache__/
