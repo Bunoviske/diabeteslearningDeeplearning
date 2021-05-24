@@ -49,3 +49,19 @@ class Metrics():
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 10})
         plt.savefig("cm.png")
         plt.show()
+
+    def mostConfused(self, confusionMatrix, dataLoader):
+        np.fill_diagonal(confusionMatrix, 0)
+        auxiliarMatrix = confusionMatrix
+        mostConfused = []
+        numberOfConfusions = 5
+
+        for z in range(0, numberOfConfusions): #beeing numberOfConfusions the variable which defines how many entries from the confusionMatrix
+            i = np.where(auxiliarMatrix==np.max(auxiliarMatrix))[0][0]
+            j = np.where(auxiliarMatrix==np.max(auxiliarMatrix))[1][0]
+            res = [dataLoader.vocab[i], dataLoader.vocab[j], auxiliarMatrix[i][j]]
+            mostConfused.append(res)
+            auxiliarMatrix[i][j] = 0
+            
+
+        return mostConfused
