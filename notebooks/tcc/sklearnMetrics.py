@@ -33,7 +33,7 @@ class Metrics():
     def get_f1Score(self, y_pred: np.ndarray, y_true:np.ndarray, average='micro'):
         return metrics.f1_score(y_true, y_pred, labels=self.classesIdx, average=average,zero_division=1)
 
-    def getConfusionMatrix(self, y_pred: np.ndarray, y_true:np.ndarray, normalize:str = "all", plot: bool = True):
+    def getConfusionMatrix(self, y_pred: np.ndarray, y_true:np.ndarray, normalize:str = None, plot: bool = True):
         cm = metrics.confusion_matrix(y_true, y_pred, labels=self.classesIdx, normalize=normalize)
         if plot:
             disp = metrics.ConfusionMatrixDisplay(confusion_matrix=cm, display_labels=self.classes)
@@ -41,25 +41,30 @@ class Metrics():
             disp.plot()
         return cm
 
-    def plotConfusionMatrix(self, confusionMatrix: np.ndarray, codes: List[str]):
-        df_cm = pd.DataFrame(confusionMatrix, index = codes[1:], columns = codes[1:])
+    def plotConfusionMatrix(self, confusionMatrix: np.ndarray, font_scale: int =1, removeDiagonal=False):
+        
+        auxiliarMatrix = np.copy(confusionMatrix)
+        if removeDiagonal:
+            np.fill_diagonal(auxiliarMatrix, 0)
+
+        df_cm = pd.DataFrame(auxiliarMatrix, index = self.classes, columns = self.classes)
         plt.figure(figsize = (40,40))
         plt.tight_layout()
-        sn.set(font_scale=0.5) # for label size
+        sn.set(font_scale=font_scale) # for label size
         sn.heatmap(df_cm, annot=True, annot_kws={"size": 10})
         plt.savefig("cm.png")
         plt.show()
 
-    def mostConfused(self, confusionMatrix, dataLoader):
-        np.fill_diagonal(confusionMatrix, 0)
-        auxiliarMatrix = confusionMatrix
-        mostConfused = []
-        numberOfConfusions = 5
+    def mostConfused(self, confusionMatrix: np.ndarray, numberOfConfusions=5):
+        # confusion matrix already comes without the indexes to ignore!
+        auxiliarMatrix = np.copy(confusionMatrix)
+        np.fill_diagonal(auxiliarMatrix, 0)
 
-        for z in range(0, numberOfConfusions): #beeing numberOfConfusions the variable which defines how many entries from the confusionMatrix
+        mostConfused = []
+        while len(mostConfused) != numberOfConfusions: #beeing numberOfConfusions the variable which defines how many entries from the confusionMatrix
             i = np.where(auxiliarMatrix==np.max(auxiliarMatrix))[0][0]
             j = np.where(auxiliarMatrix==np.max(auxiliarMatrix))[1][0]
-            res = [dataLoader.vocab[i], dataLoader.vocab[j], auxiliarMatrix[i][j]]
+            res = [self.classes[i], self.classes[j], auxiliarMatrix[i][j]] #presented as actual, predicted, number of occurrences
             mostConfused.append(res)
             auxiliarMatrix[i][j] = 0
             
