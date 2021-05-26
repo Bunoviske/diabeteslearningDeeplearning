@@ -1,5 +1,4 @@
 0: NaoAlimento
-1: AlimentoNaoRegistrado
 118: TiposArroz
 119: Leguminosas
 120: Frutas
