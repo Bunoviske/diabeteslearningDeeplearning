@@ -1,0 +1,17 @@
+0: NaoAlimento
+1: AlimentoNaoRegistrado
+118: TiposArroz
+119: Leguminosas
+120: Frutas
+121: Legumes
+122: Batatas
+123: Pure
+124: Salada
+125: CarneAnimal
+126: Massa
+127: Queijos
+128: Farofa
+129: Ovo
+130: Paes
+131: Torta
+132: Caldos
