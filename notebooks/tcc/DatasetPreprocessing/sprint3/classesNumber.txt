@@ -1,0 +1,31 @@
+0: NaoAlimento
+1: AlimentoNaoRegistrado
+2: Arroz Integral
+3: Arroz Branco
+4: Feijão
+5: Arroz Integral e Feijao
+6: Arroz Branco e Feijao
+9: Batata
+12: Pure de Batata
+17: Farofa
+53: Carne de Vaca
+56: Linguiça
+57: Carne moída
+58: Peixe
+60: Frango (sem osso)
+61: Ovo
+65: Alface
+66: Alface com Tomate
+67: Alface com Legumes
+71: Tomate Cereja
+72: Tomate
+73: Brócolis
+74: Cenoura
+75: Abobrinha
+77: Beterraba
+78: Abóbora
+80: Couve
+89: Mix Vegetais
+91: Batata Frita
+93: Pepino
+100: Banana da Terra
