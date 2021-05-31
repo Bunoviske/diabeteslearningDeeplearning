@@ -1,5 +1,4 @@
 0: NaoAlimento
-1: AlimentoNaoRegistrado
 2: Arroz Integral
 3: Arroz Branco
 4: Feijão
