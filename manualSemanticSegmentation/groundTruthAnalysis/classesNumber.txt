@@ -3,8 +3,8 @@
 2: Arroz Integral
 3: Arroz Branco
 4: Feijão
-5: Arroz Integral e Feijao
-6: Arroz Branco e Feijao
+5: Arroz Integral com Feijao
+6: Arroz Branco com Feijao
 7: Arroz Carreteiro
 8: Macarrão
 9: Batata
@@ -26,7 +26,7 @@
 25: Torta Salgada
 26: Pirão
 27: Milho
-28: Maionese
+28: Maionese de Legumes
 29: Creme de Milho
 30: Escondidinho de Carne
 31: Banana
@@ -51,23 +51,23 @@
 50: Pão Branco
 51: Pão de Queijo
 52: Bolo de Chocolate
-53: Carne de Vaca
+53: Carne de Vaca (Bife)
 54: Cozido de Carne
 55: Strogonoff
 56: Linguiça
 57: Carne moída
 58: Peixe
 59: Frango (com osso)
-60: Frango (sem osso)
+60: Frango (Filé sem osso)
 61: Ovo
 62: Queijo Cottage
-63: Mussarela de Búfalo
+63: Mussarela de Búfala
 64: Cogumelo
 65: Alface
 66: Alface com Tomate
 67: Alface com Legumes
 68: Vagem
-69: Cebola
+69: Cebola Cozida
 70: Cebola Crua
 71: Tomate Cereja
 72: Tomate
@@ -115,3 +115,5 @@
 114: Queijo Mussarela
 115: Queijo Fresco
 116: Pizza
+117: Arroz Branco com Lentilha
+118: Pure de Inhame
