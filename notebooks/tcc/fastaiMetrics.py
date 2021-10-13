@@ -7,6 +7,14 @@ def acc_segmentation(input, target):
     mask = target != void_code
     return (input.argmax(dim=1)[mask]==target[mask]).float().mean()
 
+def acc_segmentationMaskRCNN(input, target):
+    input = input["masks"][0]
+    target = target["masks"][0]
+    void_code = 0
+    target = target.squeeze(1)
+    mask = target != void_code
+    return (input.argmax(dim=1)[mask]==target[mask]).float().mean()
+
 class IOU(AvgMetric):
     "Intersection over Union Metric"
     def __init__(self, class_index, class_label, axis, ignore_index=-1): store_attr('axis,class_index,class_label,ignore_index')
