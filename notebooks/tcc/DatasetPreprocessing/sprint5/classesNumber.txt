@@ -1,0 +1,5 @@
+0: NaoAlimento
+117: Carbs
+118: Proteina
+119: Vegetais
+120: Frutas
